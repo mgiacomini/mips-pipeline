@@ -1,7 +1,8 @@
-***scMIPS***
+**scMIPS**
+
 1 - It's a simple vhdl description of Patterson and Hennessy MIPS processor.
 
-2 - Arquitecture.pdf describe the processor like was done. To understand VHDL description it is highly recommend to follow the mentioned archive.
+2 - Architecture.pdf describe the processor like was done. To understand VHDL description it is highly recommend to follow the mentioned archive.
 
 3 - As you see it is not a complete FPGA project. It is just .vhd files. To run and simulate the processor we recommend the lecture of links above:
 
