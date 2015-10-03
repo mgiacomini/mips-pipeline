@@ -53,6 +53,6 @@ Concerning Windows OS
 
 		http://www.inf.ufpr.br/roberto/ci210/assembly/MARS_features.pdf
 
-5 - Questions?
+6 - Questions?
 	Darci Luiz Tomasi Junior
 	dltj007@gmail.com
