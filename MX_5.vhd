@@ -33,9 +33,9 @@ END MX_5;
 ARCHITECTURE ARC_MX_5 OF MX_5 IS
 
 BEGIN
-	OUT_A <= IN_B  WHEN MemtoReg = '00';
-	OUT_A <= IN_A  WHEN MemtoReg = '01';
-	OUT_A <= IN_C  WHEN MemtoReg = '10';
+	OUT_A <= IN_B  WHEN MemtoReg = "00";
+	OUT_A <= IN_A  WHEN MemtoReg = "01";
+	OUT_A <= IN_C  WHEN MemtoReg = "10";
 
 END ARC_MX_5;
 

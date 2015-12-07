@@ -46,7 +46,7 @@ BEGIN
 			WHEN "000000" =>  RegDst <=		'1';
 									Jump <=			'0';
 									ALUSrc <=		'0';
-									MemtoReg <=		'00';
+									MemtoReg <=		"00";
 									RegWrite <=		'1';
 									MemRead <=		'0';
 									MemWrite <=		'0';
@@ -57,7 +57,7 @@ BEGIN
 			WHEN "100011" =>  RegDst <= 		'0';
 									Jump <=			'0';
 									ALUSrc <=		'1';
-									MemtoReg <=		'01';
+									MemtoReg <=		"01";
 									RegWrite <=		'1';
 									MemRead <=		'1';
 									MemWrite <=		'0';
@@ -68,7 +68,7 @@ BEGIN
 			WHEN "101011" =>  RegDst <=		'0'; --X
 									Jump <=			'0';
 									ALUSrc <=		'1';
-									MemtoReg <=		'00'; --X
+									MemtoReg <=		"00"; --X
 									RegWrite <=		'0';
 									MemRead <=		'0';
 									MemWrite <=		'1';
@@ -79,7 +79,7 @@ BEGIN
 			WHEN "001111" =>  RegDst <=		'0'; --X
 									Jump <=			'0';
 									ALUSrc <=		'0'; --X
-									MemtoReg <=		'10';
+									MemtoReg <=		"10";
 									RegWrite <=		'1';
 									MemRead <=		'0';
 									MemWrite <=		'0';
@@ -91,7 +91,7 @@ BEGIN
 			WHEN "001000" =>  RegDst <=		'0'; --X
 									Jump <=			'0';
 									ALUSrc <=		'1'; --X
-									MemtoReg <=		'00'; 
+									MemtoReg <=		"00"; 
 									RegWrite <=		'1';
 									MemRead <=		'0';
 									MemWrite <=		'0';
@@ -104,7 +104,7 @@ BEGIN
 			WHEN "000010" =>  RegDst <=		'0'; --X
 									Jump <=			'1';
 									ALUSrc <=		'0';
-									MemtoReg <=		'00'; --X
+									MemtoReg <=		"00"; --X
 									RegWrite <=		'0';
 									MemRead <=		'0';
 									MemWrite <=		'0';
@@ -116,7 +116,7 @@ BEGIN
 			WHEN OTHERS => 	RegDst <=		'0'; --X
 									Jump <=			'0';
 									ALUSrc <=		'0';
-									MemtoReg <=		'00'; --X
+									MemtoReg <=		"00"; --X
 									RegWrite <=		'0';
 									MemRead <=		'0';
 									MemWrite <=		'0';
