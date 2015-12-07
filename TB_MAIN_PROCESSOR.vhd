@@ -27,10 +27,11 @@
 --------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
+USE IEEE.STD_LOGIC_SIGNED.ALL;
  
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
+USE ieee.numeric_std.ALL;
  
 ENTITY TB_MAIN_PROCESSOR IS
 END TB_MAIN_PROCESSOR;
