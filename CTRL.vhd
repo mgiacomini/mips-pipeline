@@ -28,7 +28,7 @@ ENTITY CTRL IS
 		Jump :				OUT		STD_LOGIC;
 		Branch :				OUT		STD_LOGIC;
 		MemRead :			OUT		STD_LOGIC;
-		MemtoReg :			OUT		STD_LOGIC;
+		MemtoReg :			OUT		STD_LOGIC_VECTOR(1 DOWNTO 0);
 		ALUOp :				OUT		STD_LOGIC_VECTOR(1 DOWNTO 0);
 		MemWrite :			OUT		STD_LOGIC;
 		ALUSrc :				OUT		STD_LOGIC;
@@ -46,7 +46,7 @@ BEGIN
 			WHEN "000000" =>  RegDst <=		'1';
 									Jump <=			'0';
 									ALUSrc <=		'0';
-									MemtoReg <=		'0';
+									MemtoReg <=		'00';
 									RegWrite <=		'1';
 									MemRead <=		'0';
 									MemWrite <=		'0';
@@ -57,7 +57,7 @@ BEGIN
 			WHEN "100011" =>  RegDst <= 		'0';
 									Jump <=			'0';
 									ALUSrc <=		'1';
-									MemtoReg <=		'1';
+									MemtoReg <=		'01';
 									RegWrite <=		'1';
 									MemRead <=		'1';
 									MemWrite <=		'0';
@@ -68,18 +68,43 @@ BEGIN
 			WHEN "101011" =>  RegDst <=		'0'; --X
 									Jump <=			'0';
 									ALUSrc <=		'1';
-									MemtoReg <=		'0'; --X
+									MemtoReg <=		'00'; --X
 									RegWrite <=		'0';
 									MemRead <=		'0';
 									MemWrite <=		'1';
 									Branch <=		'0';
 									ALUOp(1) <=		'0';
 									ALUOp(0) <=		'0';
+			--TYPE LUI
+			WHEN "001111" =>  RegDst <=		'0'; --X
+									Jump <=			'0';
+									ALUSrc <=		'0'; --X
+									MemtoReg <=		'10';
+									RegWrite <=		'1';
+									MemRead <=		'0';
+									MemWrite <=		'0';
+									Branch <=		'0';
+									ALUOp(1) <=		'0'; --X
+									ALUOp(0) <=		'0'; --X
+
+			--TYPE ADDI
+			WHEN "001000" =>  RegDst <=		'0'; --X
+									Jump <=			'0';
+									ALUSrc <=		'1'; --X
+									MemtoReg <=		'00'; 
+									RegWrite <=		'1';
+									MemRead <=		'0';
+									MemWrite <=		'0';
+									Branch <=		'0';
+									ALUOp(1) <=		'0';
+									ALUOp(0) <=		'0';
+
+
 			--TYPE JUMP
 			WHEN "000010" =>  RegDst <=		'0'; --X
 									Jump <=			'1';
 									ALUSrc <=		'0';
-									MemtoReg <=		'0'; --X
+									MemtoReg <=		'00'; --X
 									RegWrite <=		'0';
 									MemRead <=		'0';
 									MemWrite <=		'0';
@@ -87,10 +112,11 @@ BEGIN
 									ALUOp(1) <=		'1';
 									ALUOp(0) <=		'0';
 			--TYPE BEQ
+			--TYPE BEQ
 			WHEN OTHERS => 	RegDst <=		'0'; --X
 									Jump <=			'0';
 									ALUSrc <=		'0';
-									MemtoReg <=		'0'; --X
+									MemtoReg <=		'00'; --X
 									RegWrite <=		'0';
 									MemRead <=		'0';
 									MemWrite <=		'0';
