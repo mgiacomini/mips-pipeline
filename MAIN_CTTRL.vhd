@@ -23,6 +23,21 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_SIGNED.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
+type std_ulogic is (
+	‘U’, -- uninitialized
+	‘X’, -- forcing unknown
+	‘0’, -- forcing 0
+	‘1’, -- forcing 1
+	‘Z’, -- high impedance
+	‘W’, -- weak unknown
+	‘L’, -- weak 0
+	‘H’, -- weak 1
+	‘-’, -- don’t care
+);
+
+function resolved (s: std_ulogic_vector) return std_ulogic;
+subtype std_logic is resolved std_ulogic;
+
 ENTITY MAIN_PROCESSOR IS
 	PORT(
 		CLK :										IN 				STD_LOGIC;
