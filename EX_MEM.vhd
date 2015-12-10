@@ -32,7 +32,7 @@ ENTITY EX_MEM IS
           MemtoReg   : in std_logic;
           MemWrite   : in std_logic;
           MemRead    : in std_logic;
-          Branch     : in std_logic_vector(31 downto 0);
+          Branch     : in std_logic;
          
           Jump :        IN     STD_LOGIC;
           ZeroM         : in std_logic;
@@ -45,7 +45,7 @@ ENTITY EX_MEM IS
           outRegWrite   : out std_logic;
           outMemtoReg   : out std_logic;
           outMemWrite   : out std_logic;
-          outBranch     : out std_logic_vector(31 downto 0);
+          outBranch     : out std_logic;
           outZeroM         : out std_logic;
           
           outAluOutM       : out std_logic_vector(31 downto 0);
