@@ -489,7 +489,18 @@ BEGIN
 												S_PCPlus4_IDEX_OUT);
 
 	C_EX_MEM :					IF_ID PORT MAP(CLK, S_ADD_PC_OUT_A, S_INST_OUT_A, S_PCPlus4_IFID_OUT);
-	C_MEM_WB :					IF_ID PORT MAP(CLK, S_ADD_PC_OUT_A, S_INST_OUT_A, S_PCPlus4_IFID_OUT);
-	
+
+	C_MEM_WB :					MEM_WB PORT MAP(CLK, 
+												S_RegWrite_EXMEM_OUT, 
+												 S_MemtoReg_EXMEM_OUT, 
+												 S_WriteDataM_OUT ,
+										          S_AluOutM_OUT ,
+										          S_WriteRegM_OUT ,
+										          S_RegWrite_MEMWB_OUT,
+										          S_MemtoReg_MEMWB_OUT ,
+										          S_ReadDataW_OUT,
+										          S_RAluOutW_OUT   ,
+										          S_WriteRegW_OUT);
+
 END ARC_MAIN_PROCESSOR;
 
