@@ -1,76 +1,79 @@
 v 3
-file . "ID_EX.vhd" "20151210182937.000" "20151210163644.409":
-  entity id_ex at 21( 999) + 0 on 481;
-  architecture arc_id_ex of id_ex at 63( 2498) + 0 on 482;
-file . "EX_MEM.vhd" "20151210182937.000" "20151210163644.230":
-  entity ex_mem at 21( 1001) + 0 on 477;
-  architecture arc_ex_mem of ex_mem at 54( 2206) + 0 on 478;
-file . "ULA.vhd" "20151208210813.000" "20151208192703.312":
-  entity ula at 21( 999) + 0 on 409;
-  architecture arc_ula of ula at 37( 1423) + 0 on 410;
-file . "ULA_CTRL.vhd" "20151208195343.000" "20151208192703.220":
-  entity ula_ctrl at 21( 999) + 0 on 407;
-  architecture arc_ula_ctrl of ula_ctrl at 33( 1270) + 0 on 408;
-file . "SL_2.vhd" "20151208195343.000" "20151208192703.096":
-  entity sl_2 at 21( 999) + 0 on 403;
-  architecture arc_sl_2 of sl_2 at 32( 1203) + 0 on 404;
-file . "SL_16.vhd" "20151208195343.000" "20151208192702.961":
-  entity sl_16 at 21( 999) + 0 on 399;
-  architecture arc_sl_16 of sl_16 at 32( 1205) + 0 on 400;
-file . "PC.vhd" "20151208195343.000" "20151208192702.774":
-  entity pc at 21( 1001) + 0 on 395;
-  architecture arc_pc of pc at 34( 1261) + 0 on 396;
-file . "MX_4.vhd" "20151208195343.000" "20151208192702.624":
-  entity mx_4 at 21( 999) + 0 on 391;
-  architecture arc_mx_4 of mx_4 at 34( 1275) + 0 on 392;
-file . "MX_2.vhd" "20151208195343.000" "20151208192702.481":
-  entity mx_2 at 21( 999) + 0 on 387;
-  architecture arc_mx_2 of mx_2 at 34( 1293) + 0 on 388;
-file . "MEM.vhd" "20151208195343.000" "20151208192702.294":
-  entity mem at 21( 999) + 0 on 383;
-  architecture arc_mem of mem at 37( 1361) + 0 on 384;
-file . "INST.vhd" "20151210182937.000" "20151210163644.593":
-  entity inst at 21( 999) + 0 on 485;
-  architecture arc_inst of inst at 33( 1199) + 0 on 486;
-file . "CTRL.vhd" "20151210182937.000" "20151210163644.093":
-  entity ctrl at 21( 999) + 0 on 475;
-  architecture arc_ctrl of ctrl at 40( 1462) + 0 on 476;
-file . "AND.vhd" "20151210182937.000" "20151210163643.939":
-  entity and_1 at 21( 999) + 0 on 471;
-  architecture arc_and_1 of and_1 at 33( 1194) + 0 on 472;
-file . "ADD_PC.vhd" "20151209204239.000" "20151210163643.771":
-  entity add_pc at 21( 999) + 0 on 467;
-  architecture arc_add_pc of add_pc at 32( 1202) + 0 on 468;
-file . "TB_MAIN_PROCESSOR.vhd" "20151208195343.000" "20151208192703.160":
-  entity tb_main_processor at 28( 951) + 0 on 405;
-  architecture behavior of tb_main_processor at 39( 1225) + 0 on 406;
-file . "ADD.vhd" "20151210182937.000" "20151210163643.851":
-  entity add at 21( 999) + 0 on 469;
-  architecture arc_add of add at 33( 1249) + 0 on 470;
-file . "CONCAT.vhd" "20151210182937.000" "20151210163644.015":
-  entity concat at 21( 999) + 0 on 473;
-  architecture arc_concat of concat at 33( 1261) + 0 on 474;
-file . "EXTEND.vhd" "20151210182937.000" "20151210163644.325":
-  entity extend_signal at 23( 1082) + 0 on 479;
-  architecture arc_extend_signal of extend_signal at 34( 1306) + 0 on 480;
-file . "MAIN_CTTRL.vhd" "20151208210151.000" "20151208192702.077":
-  entity main_processor at 21( 999) + 0 on 381;
-  architecture arc_main_processor of main_processor at 32( 1196) + 0 on 382;
-file . "MX_1.vhd" "20151208195343.000" "20151208192702.406":
-  entity mx_1 at 21( 999) + 0 on 385;
-  architecture arc_mx_1 of mx_1 at 34( 1287) + 0 on 386;
-file . "MX_3.vhd" "20151208195343.000" "20151208192702.546":
-  entity mx_3 at 21( 999) + 0 on 389;
-  architecture arc_mx_3 of mx_3 at 34( 1275) + 0 on 390;
-file . "MX_5.vhd" "20151208212648.000" "20151208192702.702":
-  entity mx_5 at 21( 999) + 0 on 393;
-  architecture arc_mx_5 of mx_5 at 34( 1343) + 0 on 394;
-file . "REG.vhd" "20151208195343.000" "20151208192702.842":
-  entity reg at 21( 999) + 0 on 397;
-  architecture arc_reg of reg at 39( 1462) + 0 on 398;
-file . "SL_1.vhd" "20151208195343.000" "20151208192703.032":
-  entity sl_1 at 21( 999) + 0 on 401;
-  architecture arc_sl_1 of sl_1 at 32( 1205) + 0 on 402;
-file . "IF_ID.vhd" "20151210183254.000" "20151210163644.508":
-  entity if_id at 21( 999) + 0 on 483;
-  architecture arc_if_id of if_id at 34( 1385) + 0 on 484;
+file . "ID_EX.vhd" "20151210184933.000" "20151210170350.808":
+  entity id_ex at 21( 999) + 0 on 581;
+  architecture arc_id_ex of id_ex at 63( 2498) + 0 on 582;
+file . "EX_MEM.vhd" "20151210184933.000" "20151210170350.632":
+  entity ex_mem at 21( 1001) + 0 on 577;
+  architecture arc_ex_mem of ex_mem at 54( 2206) + 0 on 578;
+file . "ULA.vhd" "20151210184933.000" "20151210170352.672":
+  entity ula at 21( 999) + 0 on 617;
+  architecture arc_ula of ula at 37( 1423) + 0 on 618;
+file . "ULA_CTRL.vhd" "20151210184933.000" "20151210170352.566":
+  entity ula_ctrl at 21( 999) + 0 on 615;
+  architecture arc_ula_ctrl of ula_ctrl at 33( 1270) + 0 on 616;
+file . "SL_2.vhd" "20151210184933.000" "20151210170352.395":
+  entity sl_2 at 21( 999) + 0 on 611;
+  architecture arc_sl_2 of sl_2 at 32( 1203) + 0 on 612;
+file . "SL_16.vhd" "20151210184933.000" "20151210170352.192":
+  entity sl_16 at 21( 999) + 0 on 607;
+  architecture arc_sl_16 of sl_16 at 32( 1205) + 0 on 608;
+file . "PC.vhd" "20151210184933.000" "20151210170351.990":
+  entity pc at 21( 1001) + 0 on 603;
+  architecture arc_pc of pc at 34( 1261) + 0 on 604;
+file . "MX_4.vhd" "20151210184933.000" "20151210170351.800":
+  entity mx_4 at 21( 999) + 0 on 599;
+  architecture arc_mx_4 of mx_4 at 34( 1275) + 0 on 600;
+file . "MX_2.vhd" "20151210184933.000" "20151210170351.629":
+  entity mx_2 at 21( 999) + 0 on 595;
+  architecture arc_mx_2 of mx_2 at 34( 1293) + 0 on 596;
+file . "MEM.vhd" "20151210184933.000" "20151210170351.351":
+  entity mem at 21( 999) + 0 on 589;
+  architecture arc_mem of mem at 37( 1361) + 0 on 590;
+file . "INST.vhd" "20151210184933.000" "20151210170350.994":
+  entity inst at 21( 999) + 0 on 585;
+  architecture arc_inst of inst at 33( 1199) + 0 on 586;
+file . "CTRL.vhd" "20151210184933.000" "20151210170350.502":
+  entity ctrl at 21( 999) + 0 on 575;
+  architecture arc_ctrl of ctrl at 40( 1462) + 0 on 576;
+file . "AND.vhd" "20151210184932.000" "20151210170350.330":
+  entity and_1 at 21( 999) + 0 on 571;
+  architecture arc_and_1 of and_1 at 33( 1194) + 0 on 572;
+file . "ADD_PC.vhd" "20151210184932.000" "20151210170350.145":
+  entity add_pc at 21( 999) + 0 on 567;
+  architecture arc_add_pc of add_pc at 32( 1202) + 0 on 568;
+file . "TB_MAIN_PROCESSOR.vhd" "20151210184933.000" "20151210170352.483":
+  entity tb_main_processor at 28( 951) + 0 on 613;
+  architecture behavior of tb_main_processor at 39( 1225) + 0 on 614;
+file . "ADD.vhd" "20151210184932.000" "20151210170350.241":
+  entity add at 21( 999) + 0 on 569;
+  architecture arc_add of add at 33( 1249) + 0 on 570;
+file . "CONCAT.vhd" "20151210184933.000" "20151210170350.411":
+  entity concat at 21( 999) + 0 on 573;
+  architecture arc_concat of concat at 33( 1261) + 0 on 574;
+file . "EXTEND.vhd" "20151210184933.000" "20151210170350.723":
+  entity extend_signal at 23( 1082) + 0 on 579;
+  architecture arc_extend_signal of extend_signal at 34( 1306) + 0 on 580;
+file . "MAIN_CTTRL.vhd" "20151210190344.000" "20151210170351.147":
+  entity main_processor at 21( 999) + 0 on 587;
+  architecture arc_main_processor of main_processor at 32( 1196) + 0 on 588;
+file . "MX_1.vhd" "20151210184933.000" "20151210170351.545":
+  entity mx_1 at 21( 999) + 0 on 593;
+  architecture arc_mx_1 of mx_1 at 34( 1287) + 0 on 594;
+file . "MX_3.vhd" "20151210184933.000" "20151210170351.711":
+  entity mx_3 at 21( 999) + 0 on 597;
+  architecture arc_mx_3 of mx_3 at 34( 1275) + 0 on 598;
+file . "MX_5.vhd" "20151210184933.000" "20151210170351.896":
+  entity mx_5 at 21( 999) + 0 on 601;
+  architecture arc_mx_5 of mx_5 at 34( 1343) + 0 on 602;
+file . "REG.vhd" "20151210184933.000" "20151210170352.070":
+  entity reg at 21( 999) + 0 on 605;
+  architecture arc_reg of reg at 39( 1462) + 0 on 606;
+file . "SL_1.vhd" "20151210184933.000" "20151210170352.280":
+  entity sl_1 at 21( 999) + 0 on 609;
+  architecture arc_sl_1 of sl_1 at 32( 1205) + 0 on 610;
+file . "IF_ID.vhd" "20151210190345.000" "20151210170350.919":
+  entity if_id at 21( 999) + 0 on 583;
+  architecture arc_if_id of if_id at 33( 1374) + 0 on 584;
+file . "MEM_WB.vhd" "20151210184933.000" "20151210170351.458":
+  entity mem_wb at 21( 1001) + 0 on 591;
+  architecture arc_mem_wb of mem_wb at 44( 1660) + 0 on 592;

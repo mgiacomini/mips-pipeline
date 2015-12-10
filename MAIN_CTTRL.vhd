@@ -440,7 +440,11 @@ BEGIN
 	C_ADD_PC :				ADD_PC PORT MAP(S_PC_OUT_A, S_ADD_PC_OUT_A);
 	C_INST :					INST PORT MAP(S_PC_OUT_A, S_INST_OUT_A);
 	C_SL_1 :					SL_1 PORT MAP(S_GERAL_JUMP, S_SL_1_OUT_A);
+
+
 	C_CTRL :					CTRL PORT MAP(S_GERAL_OPCode, S_CTRL_RegDst, S_CTRL_Jump, S_CTRL_Branch, S_CTRL_MemRead, S_CTRL_MemtoReg, S_CTRL_ALUOp, S_CTRL_MemWrite, S_CTRL_ALUSrc, S_CTRL_RegWrite);
+
+
 	C_CONCAT :				CONCAT PORT MAP(S_SL_1_OUT_A, S_GERAL_PC_4, S_CONCAT_OUT_A);
 	C_MX_1 :					MX_1 PORT MAP(S_CTRL_RegDst, S_GERAL_RT, S_GERAL_RD, S_MX_1_OUT_A);
 	C_SL_2 :					SL_2 PORT MAP(S_EXTEND_SIGNAL_OUT_A, S_SL_2_OUT_A);
@@ -460,27 +464,36 @@ BEGIN
 	--PIPE
 	C_IF_ID :					IF_ID PORT MAP(CLK, S_ADD_PC_OUT_A, S_INST_OUT_A, S_PCPlus4_IFID_OUT, S_INSTRUCTION_OUT);
 
-	C_ID_EX :					ID_EX PORT MAP(CLK, 
-												S_CTRL_RegWrite, 
-												S_CTRL_MemtoReg, 
-												S_CTRL_MemWrite,
-												S_CTRL_Branch,
-												S_CTRL_ALUOp,
-												S_CTRL_ALUSrc,
+	C_ID_EX :					ID_EX PORT MAP(CLK,
+												S_GERAL_OPCode,
 												S_CTRL_RegDst,
+												S_CTRL_Jump,
+												S_CTRL_Branch,
+												S_CTRL_MemRead,
+												S_CTRL_MemtoReg,
+												S_CTRL_ALUOp,
+												S_CTRL_MemWrite,
+												S_CTRL_ALUSrc,
+												S_CTRL_RegWrite, 
+												 
 												S_REG_OUT_A,
 												S_REG_OUT_B,
 												S_GERAL_RS,
 												S_GERAL_RT,
 												S_EXTEND_SIGNAL_OUT_A,
 												S_PCPlus4_IFID_OUT,
-												S_RegWrite_IDEX_OUT,
-												S_MemtoReg_IDEX_OUT,
-												S_MemWrite_IDEX_OUT,
+
+												S_OPCode_IDEX_OUT,
+												S_RegDst_IDEX_OUT,
+												S_Jump_IDEX_OUT,
 												S_Branch_IDEX_OUT,
-												S_ALUOp_OUT,
-												S_ALUSrc_OUT,
-												S_RegDst_OUT,
+												S_MemRead_IDEX_OUT,
+												S_MemtoReg_IDEX_OUT,
+												S_ALUOp_IDEX_OUT,
+												S_MemWrite_IDEX_OUT,
+												S_ALUSrc_IDEX_OUT,
+												S_RegWrite_IDEX_OUT,
+
 												S_RD1_OUT,
 												S_RD2_OUT,
 												S_RtE_OUT,

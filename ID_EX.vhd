@@ -26,36 +26,40 @@ USE IEEE.NUMERIC_STD.ALL;
 
 
 ENTITY ID_EX IS
-    PORT (clk           : in std_logic;
-          RegWrite   : in std_logic;
-          MemtoReg   : in std_logic;
-          MemWrite   : in std_logic;
-          Branch     : in std_logic_vector(31 downto 0);
-          ALUOp : in std_logic_vector(2 downto 0);
-          ALUSrc     : in std_logic;
-          RegDst     : in std_logic;
+    PORT (clk    :      IN      STD_LOGIC;
+          OPCode :      IN      STD_LOGIC_VECTOR(5 DOWNTO 0);
+          RegDst :      OUT     STD_LOGIC;
+          Jump :        OUT     STD_LOGIC;
+          Branch :      OUT     STD_LOGIC;
+          MemRead :     OUT     STD_LOGIC;
+          MemtoReg :    OUT     STD_LOGIC_VECTOR(1 DOWNTO 0);
+          ALUOp :       OUT     STD_LOGIC_VECTOR(1 DOWNTO 0);
+          MemWrite :    OUT     STD_LOGIC;
+          ALUSrc :      OUT     STD_LOGIC;
+          RegWrite :    OUT     STD_LOGIC;
 
           RD1           : in std_logic_vector(31 downto 0);
           RD2           : in std_logic_vector(31 downto 0);
           RtE           : in std_logic_vector(4 downto 0);
           RdE           : in std_logic_vector(4 downto 0);
-
           SignExt       : in std_logic_vector(31 downto 0);
           PCPlus4       : in std_logic_vector(31 downto 0);
 
-          outRegWrite   : out std_logic;
-          outMemtoReg   : out std_logic;
-          outMemWrite   : out std_logic;
-          outBranch     : out std_logic_vector(31 downto 0);
           outALUOp : out std_logic_vector(2 downto 0);
-          outALUSrc     : out std_logic;
           outRegDst     : out std_logic;
+          outJump       : out std_logic;
+          outBranch     : out std_logic_vector(31 downto 0);
+          outMemRead   : out std_logic;
+          outMemtoReg   : out std_logic;
+          outALUOp      : out STD_LOGIC_VECTOR(1 DOWNTO 0);
+          outMemWrite   : out std_logic;
+          outALUSrc     : out std_logic;
+          outRegWrite   : out std_logic;         
 
           outRD1           : out std_logic_vector(31 downto 0);
           outRD2           : out std_logic_vector(31 downto 0);
           outRtE           : out std_logic_vector(4 downto 0);
           outRdE           : out std_logic_vector(4 downto 0);
-
           outSignExt       : out std_logic_vector(31 downto 0);
           outPCPlus4       : out std_logic_vector(31 downto 0));
     END;
