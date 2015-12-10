@@ -31,8 +31,8 @@ ENTITY EX_MEM IS
           RegWrite   : in std_logic;
           MemtoReg   : in std_logic;
           MemWrite   : in std_logic;
+          MemRead    : in std_logic;
           Branch     : in std_logic_vector(31 downto 0);
-          
           ZeroM         : in std_logic;
           
           AluOutM       : in std_logic_vector(31 downto 0); --SAIDA DA ULA
@@ -45,6 +45,7 @@ ENTITY EX_MEM IS
           outMemWrite   : out std_logic;
           outBranch     : out std_logic_vector(31 downto 0);
           outZeroM         : out std_logic;
+          
           outAluOutM       : out std_logic_vector(31 downto 0);
           outWriteDataM    : out std_logic_vector(31 downto 0);
           outWriteRegM     : out std_logic_vector(4 downto 0);

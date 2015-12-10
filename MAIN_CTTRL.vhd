@@ -501,12 +501,36 @@ BEGIN
 												S_SignExt_OUT,
 												S_PCPlus4_IDEX_OUT);
 
-	C_EX_MEM :					IF_ID PORT MAP(CLK, S_ADD_PC_OUT_A, S_INST_OUT_A, S_PCPlus4_IFID_OUT);
+	C_EX_MEM :					IF_ID PORT MAP(CLK,
+												S_RegWrite_IDEX_OUT,
+												S_MemtoReg_IDEX_OUT,
+												S_MemWrite_IDEX_OUT,
+												S_MemRead_IDEX_OUT,
+												S_Branch_IDEX_OUT,
+												S_ULA_ZERO,
+
+												S_ULA_OUT_A,
+												S_REG_OUT_B,
+												S_MX_1_OUT_A,
+												S_ADD_OUT_A,
+
+												S_RegWrite_EXMEM_OUT,
+												S_MemtoReg_EXMEM_OUT,
+												S_MemWrite_EXMEM_OUT,
+												S_MemRead_EXMEM_OUT,
+												S_Branch_EXMEM_OUT,
+												S_ULA_EXMEM_ZERO,
+
+												S_ULA_EXMEM_OUT,
+												S_REG_EXMEM_OUT,
+												S_DSTREG_OUT,
+												S_BRANCH_ADDRESS_OUT);
+
 
 	C_MEM_WB :					MEM_WB PORT MAP(CLK, 
-												S_RegWrite_EXMEM_OUT, 
-												 S_MemtoReg_EXMEM_OUT, 
-												 S_WriteDataM_OUT ,
+												  S_RegWrite_EXMEM_OUT, 
+												  S_MemtoReg_EXMEM_OUT, 
+												  S_WriteDataM_OUT ,
 										          S_AluOutM_OUT ,
 										          S_WriteRegM_OUT ,
 										          S_RegWrite_MEMWB_OUT,
