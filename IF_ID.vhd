@@ -26,9 +26,8 @@ ENTITY IF_ID IS
     PORT (clk         : in std_logic;
           pcplus4     : in std_logic_vector(31 downto 0);
           instruction : in std_logic_vector(31 downto 0);
-          
-          pc_out      : out std_logic_vector(31 downto 0));
-          instr_out   : out std_logic_vector(31 downto 0);
+          pc_out      : out std_logic_vector(31 downto 0);
+          instr_out   : out std_logic_vector(31 downto 0));
     END IF_ID;
 
 ARCHITECTURE ARC_IF_ID of IF_ID is
