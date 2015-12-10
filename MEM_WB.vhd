@@ -28,14 +28,12 @@ ENTITY MEM_WB IS
     PORT (clk           : in std_logic;
           RegWrite   : in std_logic;
           MemtoReg   : in std_logic;
-
           ReadDataW     : in std_logic_vector(31 downto 0);
           AluOutW       : in std_logic_vector(31 downto 0);
           WriteRegW     : in std_logic_vector(4 downto 0);
 
           outRegWrite : out std_logic;
           outMemtoReg : out std_logic;
-
           outReadDataW   : out std_logic_vector(31 downto 0);
           outAluOutW     : out std_logic_vector(31 downto 0);
           outWriteRegW   : out std_logic_vector(4 downto 0));

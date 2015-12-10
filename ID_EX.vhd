@@ -28,15 +28,15 @@ USE IEEE.NUMERIC_STD.ALL;
 ENTITY ID_EX IS
     PORT (clk    :      IN      STD_LOGIC;
           OPCode :      IN      STD_LOGIC_VECTOR(5 DOWNTO 0);
-          RegDst :      OUT     STD_LOGIC;
-          Jump :        OUT     STD_LOGIC;
-          Branch :      OUT     STD_LOGIC;
-          MemRead :     OUT     STD_LOGIC;
-          MemtoReg :    OUT     STD_LOGIC_VECTOR(1 DOWNTO 0);
-          ALUOp :       OUT     STD_LOGIC_VECTOR(1 DOWNTO 0);
-          MemWrite :    OUT     STD_LOGIC;
-          ALUSrc :      OUT     STD_LOGIC;
-          RegWrite :    OUT     STD_LOGIC;
+          RegDst :      IN     STD_LOGIC;
+          Jump :        IN     STD_LOGIC;
+          Branch :      IN     STD_LOGIC;
+          MemRead :     IN     STD_LOGIC;
+          MemtoReg :    IN     STD_LOGIC;
+          ALUOp :       IN     STD_LOGIC_VECTOR(1 DOWNTO 0);
+          MemWrite :    IN     STD_LOGIC;
+          ALUSrc :      IN     STD_LOGIC;
+          RegWrite :    IN     STD_LOGIC;
 
           RD1           : in std_logic_vector(31 downto 0);
           RD2           : in std_logic_vector(31 downto 0);
@@ -45,10 +45,9 @@ ENTITY ID_EX IS
           SignExt       : in std_logic_vector(31 downto 0);
           PCPlus4       : in std_logic_vector(31 downto 0);
 
-          outALUOp : out std_logic_vector(2 downto 0);
           outRegDst     : out std_logic;
           outJump       : out std_logic;
-          outBranch     : out std_logic_vector(31 downto 0);
+          outBranch     : out std_logic;
           outMemRead   : out std_logic;
           outMemtoReg   : out std_logic;
           outALUOp      : out STD_LOGIC_VECTOR(1 DOWNTO 0);
