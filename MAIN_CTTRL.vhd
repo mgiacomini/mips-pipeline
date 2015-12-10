@@ -206,22 +206,24 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 			IN_A : 				IN  	STD_LOGIC_VECTOR (31 downto 0);				--RS
 			IN_B : 				IN  	STD_LOGIC_VECTOR (31 downto 0);				--RT
 			IN_C : 				IN 	STD_LOGIC_VECTOR (2 downto 0);
-         OUT_A :		 		OUT  	STD_LOGIC_VECTOR (31 downto 0);
+         	OUT_A :		 		OUT  	STD_LOGIC_VECTOR (31 downto 0);
 			ZERO : 				OUT  	STD_LOGIC	
 		);
 	END COMPONENT;
 
 	COMPONENT IF_ID IS
-		PORT (instruction : in std_logic_vector(31 downto 0);
-          	pcplus4     : in std_logic_vector(31 downto 0);
-          	clk         : in std_logic;
-          	reset       : in std_logic;
-          	instr_out   : out std_logic_vector(31 downto 0);
-          	pc_out      : out std_logic_vector(31 downto 0));
+		PORT (
+			  clk         : in std_logic;
+			  pcplus4     : in std_logic_vector(31 downto 0);
+			  instruction : in std_logic_vector(31 downto 0);
+			  pc_out      : out std_logic_vector(31 downto 0);
+          	  instr_out   : out std_logic_vector(31 downto 0)
+          	 );
     END COMPONENT;
 
     COMPONENT ID_EX IS
-		PORT (clk           : in std_logic;
+		PORT (
+			  clk           : in std_logic;
 	          RegWrite   : in std_logic;
 	          MemtoReg   : in std_logic;
 	          MemWrite   : in std_logic;
@@ -252,7 +254,8 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 	          outRdE           : out std_logic_vector(4 downto 0);
 
 	          outSignExt       : out std_logic_vector(31 downto 0);
-	          outPCPlus4       : out std_logic_vector(31 downto 0));
+	          outPCPlus4       : out std_logic_vector(31 downto 0)
+	        );
     END COMPONENT;
 
     COMPONENT EX_MEM IS
@@ -277,7 +280,8 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 	          outAluOutM       : out std_logic_vector(31 downto 0);
 	          outWriteDataM    : out std_logic_vector(31 downto 0);
 	          outWriteRegM     : out std_logic_vector(4 downto 0);
-	          outPcBranchM     : out std_logic_vector(31 downto 0));
+	          outPcBranchM     : out std_logic_vector(31 downto 0)
+	        );
     END COMPONENT;
 
     COMPONENT MEM_WB IS
@@ -294,7 +298,8 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 
 	          outReadDataW   : out std_logic_vector(31 downto 0);
 	          outAluOutW     : out std_logic_vector(31 downto 0);
-	          outWriteRegW   : out std_logic_vector(4 downto 0));
+	          outWriteRegW   : out std_logic_vector(4 downto 0)
+	        );
     END COMPONENT;
 	
 	--ADD_PC
