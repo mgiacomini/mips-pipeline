@@ -313,7 +313,7 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 	
 	--CTRL
 	SIGNAL S_CTRL_RegDst :			STD_LOGIC;	
-	SIGNAL S_CTRL_Jump :				STD_LOGIC;	
+	SIGNAL S_CTRL_Jump :			STD_LOGIC;	
 	SIGNAL S_CTRL_Branch :			STD_LOGIC;
 	SIGNAL S_CTRL_MemRead :			STD_LOGIC;
 	SIGNAL S_CTRL_MemtoReg :		STD_LOGIC;
@@ -509,14 +509,14 @@ BEGIN
 												S_PCPlus4_IDEX_OUT,
 												S_JUMP_ADDR_IDEX_OUT);
 
-	C_EX_MEM :					IF_ID PORT MAP(CLK,
+	C_EX_MEM :					EX_MEM PORT MAP(CLK,
 												S_RegWrite_IDEX_OUT,
 												S_MemtoReg_IDEX_OUT,
 												S_MemWrite_IDEX_OUT,
 												S_MemRead_IDEX_OUT,
 												S_Branch_IDEX_OUT,
-												S_ULA_ZERO,
 												S_Jump_IDEX_OUT,
+												S_ULA_ZERO,
 
 												S_ULA_OUT_A,
 												S_REG_OUT_B,
