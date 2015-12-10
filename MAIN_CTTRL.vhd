@@ -454,6 +454,37 @@ BEGIN
 
 	--PIPE
 	C_IF_ID :					IF_ID PORT MAP(CLK, S_ADD_PC_OUT_A, S_INST_OUT_A, S_PCPlus4_IFID_OUT, S_INSTRUCTION_OUT);
+
+	C_ID_EX :					ID_EX PORT MAP(CLK, 
+												S_CTRL_RegWrite, 
+												S_CTRL_MemtoReg, 
+												S_CTRL_MemWrite,
+												S_CTRL_Branch,
+												S_CTRL_ALUOp,
+												S_CTRL_ALUSrc,
+												S_CTRL_RegDst,
+												S_REG_OUT_A,
+												S_REG_OUT_B,
+												S_GERAL_RS,
+												S_GERAL_RT,
+												S_EXTEND_SIGNAL_OUT_A,
+												S_PCPlus4_IFID_OUT,
+												S_RegWrite_IDEX_OUT,
+												S_MemtoReg_IDEX_OUT,
+												S_MemWrite_IDEX_OUT,
+												S_Branch_IDEX_OUT,
+												S_ALUOp_OUT,
+												S_ALUSrc_OUT,
+												S_RegDst_OUT,
+												S_RD1_OUT,
+												S_RD2_OUT,
+												S_RtE_OUT,
+												S_RdE_OUT,
+												S_SignExt_OUT,
+												S_PCPlus4_IDEX_OUT);
+
+	C_EX_MEM :					IF_ID PORT MAP(CLK, S_ADD_PC_OUT_A, S_INST_OUT_A, S_PCPlus4_IFID_OUT);
+	C_MEM_WB :					IF_ID PORT MAP(CLK, S_ADD_PC_OUT_A, S_INST_OUT_A, S_PCPlus4_IFID_OUT);
 	
 END ARC_MAIN_PROCESSOR;
 
