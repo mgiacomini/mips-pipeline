@@ -27,7 +27,6 @@ USE IEEE.NUMERIC_STD.ALL;
 
 ENTITY ID_EX IS
     PORT (clk    :      IN      STD_LOGIC;
-          OPCode :      IN      STD_LOGIC_VECTOR(5 DOWNTO 0);
           RegDst :      IN     STD_LOGIC;
           Jump :        IN     STD_LOGIC;
           Branch :      IN     STD_LOGIC;
@@ -38,6 +37,7 @@ ENTITY ID_EX IS
           ALUSrc :      IN     STD_LOGIC;
           RegWrite :    IN     STD_LOGIC;
 
+          JumpAddr           : in std_logic_vector(31 downto 0);
           RD1           : in std_logic_vector(31 downto 0);
           RD2           : in std_logic_vector(31 downto 0);
           RtE           : in std_logic_vector(4 downto 0);
@@ -60,7 +60,8 @@ ENTITY ID_EX IS
           outRtE           : out std_logic_vector(4 downto 0);
           outRdE           : out std_logic_vector(4 downto 0);
           outSignExt       : out std_logic_vector(31 downto 0);
-          outPCPlus4       : out std_logic_vector(31 downto 0));
+          outPCPlus4       : out std_logic_vector(31 downto 0);
+          JumpAddrOut           : out std_logic_vector(31 downto 0));
     END;
 
 Architecture ARC_ID_EX of ID_EX is
@@ -70,14 +71,14 @@ Architecture ARC_ID_EX of ID_EX is
             IF( clk'event and clk = '1') THEN
             outRegWrite <= RegWrite;
             outMemtoReg <= MemtoReg;
-            outMemWrite <=MemWrite;
+            outMemWrite <= MemWrite;
             outBranch <= Branch;
-            outALUOp <=ALUOp;
-            outALUSrc <=ALUSrc;
-            outRegDst <=RegDst;
-
-            outRD1 <=RD1;
-            outRD2 <=RD2;
+            outALUOp <= ALUOp;
+            outALUSrc <= ALUSrc;
+            outRegDst <= RegDst;
+            JumpAddrOut <= JumpAddr;
+            outRD1 <= RD1;
+            outRD2 <= RD2;
             outRtE <= RtE;
             outRdE <= RdE;
 

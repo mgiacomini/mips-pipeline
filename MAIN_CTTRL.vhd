@@ -69,7 +69,7 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 			Jump :			OUT		STD_LOGIC;
 			Branch :			OUT		STD_LOGIC;
 			MemRead :		OUT		STD_LOGIC;
-			MemtoReg :		OUT		STD_LOGIC_VECTOR(1 DOWNTO 0);
+			MemtoReg :		OUT		STD_LOGIC;
 			ALUOp :			OUT		STD_LOGIC_VECTOR(1 DOWNTO 0);
 			MemWrite :		OUT		STD_LOGIC;
 			ALUSrc :			OUT		STD_LOGIC;
@@ -141,10 +141,9 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 	
 	COMPONENT MX_5 IS
 		PORT(
-			MemtoReg :		IN 		STD_LOGIC_VECTOR(1 DOWNTO 0);
+			MemtoReg :		IN 		STD_LOGIC;
 			IN_A :			IN 		STD_LOGIC_VECTOR(31 DOWNTO 0);
 			IN_B :			IN 		STD_LOGIC_VECTOR(31 DOWNTO 0);
-			IN_C :			IN 		STD_LOGIC_VECTOR(31 DOWNTO 0);
 			OUT_A :			OUT 		STD_LOGIC_VECTOR(31 DOWNTO 0)
 		);
 	END COMPONENT;
@@ -185,13 +184,6 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 			OUT_A	  :		OUT		STD_LOGIC_VECTOR (31 DOWNTO 0)
 		);
 	END COMPONENT;
-
-	COMPONENT SL_16 IS
-		PORT(
-			IN_A : 			IN  		STD_LOGIC_VECTOR (31 DOWNTO 0);
-			OUT_A	  :		OUT		STD_LOGIC_VECTOR (31 DOWNTO 0)
-		);
-	END COMPONENT;
 	
 	COMPONENT ULA_CTRL IS
 		PORT ( 
@@ -223,38 +215,42 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 
     COMPONENT ID_EX IS
 		PORT (
-			  clk           : in std_logic;
-	          RegWrite   : in std_logic;
-	          MemtoReg   : in std_logic;
-	          MemWrite   : in std_logic;
-	          Branch     : in std_logic_vector(31 downto 0);
-	          ALUOp : in std_logic_vector(2 downto 0);
-	          ALUSrc     : in std_logic;
-	          RegDst     : in std_logic;
+			  clk    :      IN      STD_LOGIC;
+          RegDst :      IN     STD_LOGIC;
+          Jump :        IN     STD_LOGIC;
+          Branch :      IN     STD_LOGIC;
+          MemRead :     IN     STD_LOGIC;
+          MemtoReg :    IN     STD_LOGIC;
+          ALUOp :       IN     STD_LOGIC_VECTOR(1 DOWNTO 0);
+          MemWrite :    IN     STD_LOGIC;
+          ALUSrc :      IN     STD_LOGIC;
+          RegWrite :    IN     STD_LOGIC;
 
-	          RD1           : in std_logic_vector(31 downto 0);
-	          RD2           : in std_logic_vector(31 downto 0);
-	          RtE           : in std_logic_vector(4 downto 0);
-	          RdE           : in std_logic_vector(4 downto 0);
+          JumpAddr           : in std_logic_vector(31 downto 0);
+          RD1           : in std_logic_vector(31 downto 0);
+          RD2           : in std_logic_vector(31 downto 0);
+          RtE           : in std_logic_vector(4 downto 0);
+          RdE           : in std_logic_vector(4 downto 0);
+          SignExt       : in std_logic_vector(31 downto 0);
+          PCPlus4       : in std_logic_vector(31 downto 0);
 
-	          SignExt       : in std_logic_vector(31 downto 0);
-	          PCPlus4       : in std_logic_vector(31 downto 0);
+          outRegDst     : out std_logic;
+          outJump       : out std_logic;
+          outBranch     : out std_logic;
+          outMemRead   : out std_logic;
+          outMemtoReg   : out std_logic;
+          outALUOp      : out STD_LOGIC_VECTOR(1 DOWNTO 0);
+          outMemWrite   : out std_logic;
+          outALUSrc     : out std_logic;
+          outRegWrite   : out std_logic;         
 
-	          outRegWrite   : out std_logic;
-	          outMemtoReg   : out std_logic;
-	          outMemWrite   : out std_logic;
-	          outBranch     : out std_logic_vector(31 downto 0);
-	          outALUOp : out std_logic_vector(2 downto 0);
-	          outALUSrc     : out std_logic;
-	          outRegDst     : out std_logic;
-
-	          outRD1           : out std_logic_vector(31 downto 0);
-	          outRD2           : out std_logic_vector(31 downto 0);
-	          outRtE           : out std_logic_vector(4 downto 0);
-	          outRdE           : out std_logic_vector(4 downto 0);
-
-	          outSignExt       : out std_logic_vector(31 downto 0);
-	          outPCPlus4       : out std_logic_vector(31 downto 0)
+          outRD1           : out std_logic_vector(31 downto 0);
+          outRD2           : out std_logic_vector(31 downto 0);
+          outRtE           : out std_logic_vector(4 downto 0);
+          outRdE           : out std_logic_vector(4 downto 0);
+          outSignExt       : out std_logic_vector(31 downto 0);
+          outPCPlus4       : out std_logic_vector(31 downto 0);
+          JumpAddrOut           : out std_logic_vector(31 downto 0)
 	        );
     END COMPONENT;
 
@@ -264,7 +260,8 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 	          MemtoReg   : in std_logic;
 	          MemWrite   : in std_logic;
 	          Branch     : in std_logic_vector(31 downto 0);
-	          
+	          Jump :        IN     STD_LOGIC;
+
 	          ZeroM         : in std_logic;
 	          
 	          AluOutM       : in std_logic_vector(31 downto 0); --SAIDA DA ULA
@@ -361,9 +358,6 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 	
 	--SL_2
 	SIGNAL S_SL_2_OUT_A	  :		STD_LOGIC_VECTOR (31 DOWNTO 0);
-
-	--SL_16
-	SIGNAL S_SL_16_OUT_A	  :		STD_LOGIC_VECTOR (31 DOWNTO 0);
 	
 	--ULA_CTRL
 	SIGNAL S_ULA_CTRL_OUT_A : 		STD_LOGIC_VECTOR (2 DOWNTO 0);
@@ -380,23 +374,24 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 	SIGNAL  S_INSTRUCTION_OUT :				STD_LOGIC_VECTOR (31 DOWNTO 0);
 
 	--ID_EX
-	SIGNAL  S_OPCode_IDEX_OUT :				STD_LOGIC_VECTOR (4 DOWNTO 0);
 	SIGNAL  S_RegDst_IDEX_OUT :				STD_LOGIC;
 	SIGNAL  S_Jump_IDEX_OUT :				STD_LOGIC;
 	SIGNAL  S_Branch_IDEX_OUT :				STD_LOGIC;
 	SIGNAL  S_MemRead_IDEX_OUT :				STD_LOGIC;
 	SIGNAL  S_MemtoReg_IDEX_OUT :				STD_LOGIC;
-	SIGNAL  S_ALUOp_IDEX_OUT :				STD_LOGIC_VECTOR (2 DOWNTO 0);
+	SIGNAL  S_ALUOp_IDEX_OUT :				STD_LOGIC_VECTOR (1 DOWNTO 0);
 	SIGNAL  S_MemWrite_IDEX_OUT :				STD_LOGIC;
 	SIGNAL  S_ALUSrc_IDEX_OUT :				STD_LOGIC;
 	SIGNAL  S_RegWrite_IDEX_OUT :				STD_LOGIC;
 
+	SIGNAL  S_CONCAT_IDEX_OUT:				STD_LOGIC_VECTOR (31 DOWNTO 0);
 	SIGNAL  S_RD1_OUT :				STD_LOGIC_VECTOR (31 DOWNTO 0);
 	SIGNAL  S_RD2_OUT :				STD_LOGIC_VECTOR (31 DOWNTO 0);
 	SIGNAL  S_RtE_OUT :				STD_LOGIC_VECTOR (4 DOWNTO 0);
 	SIGNAL  S_RdE_OUT :				STD_LOGIC_VECTOR (4 DOWNTO 0);
 	SIGNAL  S_SignExt_OUT :				STD_LOGIC_VECTOR (31 DOWNTO 0);
 	SIGNAL  S_PCPlus4_IDEX_OUT :				STD_LOGIC_VECTOR (31 DOWNTO 0);
+	SIGNAL  S_JUMP_ADDR_IDEX_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
 
 
 
@@ -447,13 +442,13 @@ BEGIN
 	C_PC :					PC PORT MAP(CLK, RESET, S_MX_4_OUT_A, S_PC_OUT_A);
 	C_ADD_PC :				ADD_PC PORT MAP(S_PC_OUT_A, S_ADD_PC_OUT_A);
 	C_INST :					INST PORT MAP(S_PC_OUT_A, S_INST_OUT_A);
-	C_SL_1 :					SL_1 PORT MAP(S_GERAL_JUMP, S_SL_1_OUT_A);
+	C_SL_1 :					SL_1 PORT MAP(S_INSTRUCTION_OUT(31 DOWNTO 0), S_SL_1_OUT_A);
 
 
 	C_CTRL :					CTRL PORT MAP(S_INSTRUCTION_OUT(31 DOWNTO 26), S_CTRL_RegDst, S_CTRL_Jump, S_CTRL_Branch, S_CTRL_MemRead, S_CTRL_MemtoReg, S_CTRL_ALUOp, S_CTRL_MemWrite, S_CTRL_ALUSrc, S_CTRL_RegWrite);
 
 
-	C_CONCAT :				CONCAT PORT MAP(S_SL_1_OUT_A, S_GERAL_PC_4, S_CONCAT_OUT_A);
+	C_CONCAT :				CONCAT PORT MAP(S_SL_1_OUT_A, S_PCPlus4_IFID_OUT, S_CONCAT_OUT_A);
 	C_MX_1 :					MX_1 PORT MAP(S_CTRL_RegDst, S_RtE_OUT, S_RdE_OUT, S_MX_1_OUT_A);
 	C_SL_2 :					SL_2 PORT MAP(S_SignExt_OUT, S_SL_2_OUT_A);
 	C_REG :					REG PORT MAP(CLK, RESET, S_RegWrite_MEMWB_OUT, S_INSTRUCTION_OUT(25 DOWNTO 21), S_INSTRUCTION_OUT(20 DOWNTO 16), S_WriteRegW_OUT, S_MX_5_OUT_A, S_REG_OUT_A, S_REG_OUT_B);
@@ -470,14 +465,13 @@ BEGIN
 	C_MEM :					MEM PORT MAP(CLK, RESET, S_MemWrite_EXMEM_OUT, S_MemRead_EXMEM_OUT, S_ULA_EXMEM_OUT, S_REG_EXMEM_OUT, S_MEM_OUT_A);
 
 	C_MX_4 :					MX_4 PORT MAP(S_CTRL_Jump, S_CONCAT_OUT_A, S_MX_3_OUT_A, S_MX_4_OUT_A);
-	
-	C_MX_5 :					MX_5 PORT MAP(S_CTRL_MemtoReg, S_ReadDataW_OUT, S_AluOutW_OUT, S_MX_5_OUT_A);
+
+	C_MX_5 :					MX_5 PORT MAP(S_MemtoReg_MEMWB_OUT, S_ReadDataW_OUT, S_AluOutW_OUT, S_MX_5_OUT_A);
 
 	--PIPE
 	C_IF_ID :					IF_ID PORT MAP(CLK, S_ADD_PC_OUT_A, S_INST_OUT_A, S_PCPlus4_IFID_OUT, S_INSTRUCTION_OUT);
 
 	C_ID_EX :					ID_EX PORT MAP(CLK,
-												S_GERAL_OPCode,
 												S_CTRL_RegDst,
 												S_CTRL_Jump,
 												S_CTRL_Branch,
@@ -488,6 +482,7 @@ BEGIN
 												S_CTRL_ALUSrc,
 												S_CTRL_RegWrite, 
 												 
+												S_CONCAT_OUT_A,
 												S_REG_OUT_A,
 												S_REG_OUT_B,
 												S_GERAL_RS,
@@ -495,7 +490,7 @@ BEGIN
 												S_EXTEND_SIGNAL_OUT_A,
 												S_PCPlus4_IFID_OUT,
 
-												S_OPCode_IDEX_OUT,
+
 												S_RegDst_IDEX_OUT,
 												S_Jump_IDEX_OUT,
 												S_Branch_IDEX_OUT,
@@ -511,7 +506,8 @@ BEGIN
 												S_RtE_OUT,
 												S_RdE_OUT,
 												S_SignExt_OUT,
-												S_PCPlus4_IDEX_OUT);
+												S_PCPlus4_IDEX_OUT,
+												S_JUMP_ADDR_IDEX_OUT);
 
 	C_EX_MEM :					IF_ID PORT MAP(CLK,
 												S_RegWrite_IDEX_OUT,
@@ -520,6 +516,7 @@ BEGIN
 												S_MemRead_IDEX_OUT,
 												S_Branch_IDEX_OUT,
 												S_ULA_ZERO,
+												S_Jump_IDEX_OUT,
 
 												S_ULA_OUT_A,
 												S_REG_OUT_B,
