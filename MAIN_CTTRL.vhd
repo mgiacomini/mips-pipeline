@@ -256,30 +256,30 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 
     COMPONENT EX_MEM IS
 		PORT (clk           : in std_logic;
-	          RegWrite   : in std_logic;
-	          MemtoReg   : in std_logic;
-	          MemWrite   : in std_logic;
-	          Branch     : in std_logic;
-	          Jump :        IN     STD_LOGIC;
-	          ZeroM         : in std_logic;
-	          
-	          AluOutM       : in std_logic_vector(31 downto 0); --SAIDA DA ULA
-	          WriteDataM    : in std_logic_vector(31 downto 0); -- VEM DA SAIDA 2 DE REG
-	          WriteRegM     : in std_logic_vector(4 downto 0); -- REG DESTINO VEM DO MX_1
-	          PcBranchM     : in std_logic_vector(31 downto 0); --ENDERECO DE DESVIO CONDICIONAL
-	          
-	          outRegWrite   : out std_logic;
-	          outMemtoReg   : out std_logic;
-	          outMemWrite   : out std_logic;
-	          outMemRead   : out std_logic;
-	          outBranch     : out std_logic;
-	          outZeroM         : out std_logic;
-
-	          outAluOutM       : out std_logic_vector(31 downto 0);
-	          outWriteDataM    : out std_logic_vector(31 downto 0);
-	          outWriteRegM     : out std_logic_vector(4 downto 0);
-	          outPcBranchM     : out std_logic_vector(31 downto 0)
-	        );
+          RegWrite   : in std_logic;
+          MemtoReg   : in std_logic;
+          MemWrite   : in std_logic;
+          MemRead    : in std_logic;
+          Branch     : in std_logic;
+          Jump :        IN STD_LOGIC;
+          ZeroM         : in std_logic;
+          
+          AluOutM       : in std_logic_vector(31 downto 0); --SAIDA DA ULA
+          WriteDataM    : in std_logic_vector(31 downto 0); -- VEM DA SAIDA 2 DE REG
+          WriteRegM     : in std_logic_vector(4 downto 0); -- REG DESTINO VEM DO MX_1
+          PcBranchM     : in std_logic_vector(31 downto 0); --ENDERECO DE DESVIO CONDICIONAL
+          
+          outRegWrite   : out std_logic;
+          outMemtoReg   : out std_logic;
+          outMemWrite   : out std_logic;
+          outMemRead   : out std_logic;
+          outBranch     : out std_logic;
+          outZeroM         : out std_logic;
+          
+          outAluOutM       : out std_logic_vector(31 downto 0);
+          outWriteDataM    : out std_logic_vector(31 downto 0);
+          outWriteRegM     : out std_logic_vector(4 downto 0);
+          outPcBranchM     : out std_logic_vector(31 downto 0));
     END COMPONENT;
 
     COMPONENT MEM_WB IS
