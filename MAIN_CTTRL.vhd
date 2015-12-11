@@ -261,7 +261,6 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 	          MemWrite   : in std_logic;
 	          Branch     : in std_logic;
 	          Jump :        IN     STD_LOGIC;
-
 	          ZeroM         : in std_logic;
 	          
 	          AluOutM       : in std_logic_vector(31 downto 0); --SAIDA DA ULA
@@ -272,8 +271,10 @@ ARCHITECTURE ARC_MAIN_PROCESSOR OF MAIN_PROCESSOR IS
 	          outRegWrite   : out std_logic;
 	          outMemtoReg   : out std_logic;
 	          outMemWrite   : out std_logic;
+	          outMemRead   : out std_logic;
 	          outBranch     : out std_logic;
 	          outZeroM         : out std_logic;
+
 	          outAluOutM       : out std_logic_vector(31 downto 0);
 	          outWriteDataM    : out std_logic_vector(31 downto 0);
 	          outWriteRegM     : out std_logic_vector(4 downto 0);
@@ -489,7 +490,6 @@ BEGIN
 												S_GERAL_RT,
 												S_EXTEND_SIGNAL_OUT_A,
 												S_PCPlus4_IFID_OUT,
-
 
 												S_RegDst_IDEX_OUT,
 												S_Jump_IDEX_OUT,

@@ -33,8 +33,7 @@ ENTITY EX_MEM IS
           MemWrite   : in std_logic;
           MemRead    : in std_logic;
           Branch     : in std_logic;
-         
-          Jump :        IN     STD_LOGIC;
+          Jump :        IN STD_LOGIC;
           ZeroM         : in std_logic;
           
           AluOutM       : in std_logic_vector(31 downto 0); --SAIDA DA ULA
@@ -45,6 +44,7 @@ ENTITY EX_MEM IS
           outRegWrite   : out std_logic;
           outMemtoReg   : out std_logic;
           outMemWrite   : out std_logic;
+          outMemRead   : out std_logic;
           outBranch     : out std_logic;
           outZeroM         : out std_logic;
           
@@ -62,6 +62,7 @@ Architecture ARC_EX_MEM of EX_MEM is
             outRegWrite <= RegWrite;
             outMemtoReg <= MemtoReg;
             outMemWrite <=MemWrite;
+            outMemRead <=MemRead;
             outBranch <= Branch;
             outZeroM <= ZeroM;
             outAluOutM <= AluOutM;
